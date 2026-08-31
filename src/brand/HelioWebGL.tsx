@@ -62,9 +62,9 @@ interface HelioCanvasProps {
 
 const HelioCanvas = dynamic(
   async () => {
-    const { Canvas, useFrame } = await import('@react-three/fiber')
-    const { MeshDistortMaterial } = await import('@react-three/drei')
-    const THREE = await import('three')
+    const { Canvas, useFrame } = await import(/* webpackChunkName: "helio" */ '@react-three/fiber')
+    const { MeshDistortMaterial } = await import(/* webpackChunkName: "helio" */ '@react-three/drei')
+    const THREE = await import(/* webpackChunkName: "helio" */ 'three')
 
 /* ------------------------------------------------------------------------- *
  * Deterministic corona layout — mirrors the static Helio's mote scatter so
