@@ -5,9 +5,10 @@ import { useTranslations } from 'next-intl'
 import { Button, StatBlock } from '../components'
 import { HB_DATA } from '../data'
 
-const LiveHelio = dynamic(() => import('../brand/LiveHelio').then((m) => m.LiveHelio), {
-  ssr: false,
-})
+const LiveHelio = dynamic(
+  () => import(/* webpackChunkName: "landing" */ '../brand/LiveHelio').then((m) => m.LiveHelio),
+  { ssr: false },
+)
 
 /**
  * Landing — public hero. The live Helio dominates; three counters deep-link to
