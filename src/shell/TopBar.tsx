@@ -11,9 +11,14 @@ import { LOCALE_LABELS, type Locale } from '../i18n/request'
 import { useWallet, shortAddress } from '../wallet/WalletProvider'
 import { useTheme } from '../theme/ThemeProvider'
 
-const Mark = dynamic(() => import('../brand/Mark').then((m) => m.Mark), {
-  ssr: false,
-})
+// Three/R3F must stay in this landing-only chunk, never in the shared shell.
+const Mark = dynamic(
+  () =>
+    import(/* webpackChunkName: "landing-brand" */ '../brand/Mark').then(
+      (m) => m.Mark,
+    ),
+  { ssr: false, loading: () => null },
+)
 
 /**
  * TopBar — persistent nav rendered by the root layout. Analemma mark + Explore /
